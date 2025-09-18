@@ -167,3 +167,22 @@ lg(n) processors to run your algorithm in parallel. What is the
 upper bound on the runtime of this parallel implementation? (Hint: assume a Greedy
 Scheduler). Please explain how do you have this.
 
+Greedy Scheduler: When we only have P processors, the time T<sub>p</sub> to perform computation is bouunded by:
+
+T<sub>p</sub> < (T<sub>1</sub> / P) + T<sub>inf</sub>
+
+T<sub>p</sub> < (W/P) + S
+
+T<sub>p</sub> is O((W/P) + S)
+
+W = Theta(n log n)
+
+S = Theta(n)
+
+P = log n
+
+T<sub>log n</sub> < (Theta(n log n) / log n) + Theta(n)
+
+T<sub>log n</sub> < Theta(n) + Theta(n)
+
+T<sub>log n</sub> < Theta(n)
