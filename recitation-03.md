@@ -1,7 +1,6 @@
 # CMPS 2200  Recitation 03
 
-**Name (Team Member 1):**_________________________  
-**Name (Team Member 2):**_________________________
+**Name (Team Member 1):** Caitlyn Gifford
 
 
 
@@ -111,39 +110,32 @@ following:
 a) Describe, in your own words, what the `combine` method is doing and
 what it returns.
 
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
+The `combine` method merges the two arrays left_ranks and right_ranks and counts the disagreements. It returns the number of disagreements and the sorted combined array of left_ranks and right_ranks. 
 
 b) Write the work recurrence formula for `num_disagreements_fast`. Please explain how do you have this.
 
-.  
-.  
-.  
-.  
-.  
-.  
+It is the same work recurrence formula for a merge sort. There are two recurssive calls that divide the inputs by half, and then a linear merge step. The two explicit base cases where n = 1 and n = 2 work in constant time. 
+
+W(n) = C<sub>0</sub> if n = 1
+
+W(n) = C<sub>1</sub> if n = 2
+
+W(n) = 2W(n/2) + O(n) if n > 2
 
 c) Solve this recurrence using any method you like. Please explain how do you have this.
 
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
+Theta(n) splits to:                                                 **c<sub>1</sub> n**
+
+    Theta(n/2) + Theta(n/2) splits to:                              **2 * (c<sub>1</sub> / 2) = c<sub>1</sub> n**
+
+        Theta(n/4) + Theta(n/4) + Theta(n/4) + Theta(n/4)           **4 * (c<sub>1</sub> / 4) = c<sub>1</sub> n**
+
+Each level i has 2<sup>i</sup> nodes. Each node cost Theta(n/2<sup>i</sup>). 
+Therefore, each level has a cost of 2<sup>i</sup> * (n/2<sup>i</sup>) = Theta(n)
+
+Each of the log<sub>2</sub>n levels cost Theta(n):
+
+Therefore: W(n) = Theta(n log n).
 
 
 d) Assuming that your recursive calls to `num_disagreements_fast` are
