@@ -141,26 +141,29 @@ Therefore: W(n) = Theta(n log n).
 d) Assuming that your recursive calls to `num_disagreements_fast` are
 done in parallel, write the span recurrence for your algorithm. Please explain how do you have this.
 
-S(n) = S(n/2) + O(log n) if n is > 2
+S(n) = S(n/2) + O(n) if n is > 2
 
 The span is the longest sequence of dependencies (the critical path length).
 
-Assuming that it's done in parallel, then only one recurssive branch matters in this equation since the recurssive calls happen concurrently, each merge step deals with half of the array at a time, and each merge step costs O(log n) time. 
+Assuming that it's done in parallel, then only one recurssive branch matters in this equation since the recurssive calls happen concurrently, each recurssive call deals with half of the array at a time, and the combine step runs sequentially, costing Theta(n).
 
 e) Solve this recurrence using any method you like. Please explain how do you have this.
 
-Each level of the recurssion tree is concurrent and all nodes have the same cost:
-S(n) = summation from i=0 to log n of (log(n/2<sup>i</sup>))
+S(n) = S(n/2) + O(n)
 
-= summation from i=0 to log n of (log(n) - i)
+S(n/2) = S(n/4) + O(n/2)
 
-= summation from i=0 to log n of (log n) - summation from i=1 to log n of (i)
+S(n/4) = S(n/8) + O(n/4)
 
-= log n * (log n + 1) - ((1/2)log n * (log(n) + 1))
+Combined: S(n) = ((S(n/8) + O(n/4)) + O(n/2)) + O(n)
 
-= ((1/2) * log<sup>2</sup>n) + ((1/2)*log n)
+S(n) = O(n) + O(n/2) + O(n/4) + ... + O(1)
 
-= O(log<sup>2</sup>n)
+S(n) = O[n + (n/2) + (n/4) + ...]
+
+n + (n/2) + (n/4) + ... <= 2n
+
+Therefore S(n) = O(n)
 
 f) If `ranks` is a list of size n, Netflix says it will give you
 lg(n) processors to run your algorithm in parallel. What is the
