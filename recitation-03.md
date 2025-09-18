@@ -124,11 +124,11 @@ W(n) = 2W(n/2) + O(n) if n > 2
 
 c) Solve this recurrence using any method you like. Please explain how do you have this.
 
-Theta(n) splits to:                                                 **c<sub>1</sub> n**
+Theta(n) splits to:                                         **c<sub>1</sub> n**
 
-    Theta(n/2) + Theta(n/2) splits to:                              **2 * (c<sub>1</sub> / 2) = c<sub>1</sub> n**
+Theta(n/2) + Theta(n/2) splits to:                          **2 * (c<sub>1</sub> / 2) = c<sub>1</sub> n**
 
-        Theta(n/4) + Theta(n/4) + Theta(n/4) + Theta(n/4)           **4 * (c<sub>1</sub> / 4) = c<sub>1</sub> n**
+Theta(n/4) + Theta(n/4) + Theta(n/4) + Theta(n/4)           **4 * (c<sub>1</sub> / 4) = c<sub>1</sub> n**
 
 Each level i has 2<sup>i</sup> nodes. Each node cost Theta(n/2<sup>i</sup>). 
 Therefore, each level has a cost of 2<sup>i</sup> * (n/2<sup>i</sup>) = Theta(n)
